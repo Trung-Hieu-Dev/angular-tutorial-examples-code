@@ -1,0 +1,38 @@
+<h1>Angular App</h1>
+
+<!-- String Interpolation -->
+<p>{{ message }}</p>
+
+<!-- Property Binding -->
+<img alt="" src="{{ imgUrl }}}"/>
+<!-- Not supporting for this String Interpolation any more -->
+<br/>
+<img [src]="imgUrl" alt=""/>
+
+<!--Single class binding-->
+<p [class.text-red]="bool">Single Class Binding</p>
+<!--Multiple class binding-->
+<p [class]="{ 'text-red': bool }" class="sm">
+  Multiple Class Binding with condition
+</p>
+
+<!--Style Binding-->
+<p [style.color]="greenText">Single Style Binding</p>
+<!--Multiple Style Binding-->
+<p [style]="{ color: bool ? 'red' : '', fontSize: '36px' }">
+  Multi-Style Binding
+</p>
+
+<hr/>
+
+<!--Event Binding-->
+<button (click)="buttonClick()">CLick</button>
+<br/>
+<!--Event Filtering-->
+<input (keyup.enter)="inputHandle($event)"/>
+<br/>
+<!--Template variable: get input value-->
+<input #username (keyup.enter)="userNameHandle(username.value)"/>
+<!--Two-way Binding-->
+<input (keyup.enter)="twoWayBindingHandle()" [(ngModel)]="text"/>
+{{ text }}

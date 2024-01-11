@@ -1,0 +1,11 @@
+<h2>Post Component</h2>
+<p>{{ postTitleProp }}</p>
+<p>{{ title }}</p>
+<p>{{ fromParent }}</p>
+<app-post-list [fromPostParent]="postParentMessage"></app-post-list>
+
+<button (click)="sendMessage()">Click</button>
+
+<hr/>
+
+<button (click)="sendEvent()">Pass Event To Parent</button>

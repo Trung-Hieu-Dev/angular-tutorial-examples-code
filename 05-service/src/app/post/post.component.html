@@ -1,0 +1,6 @@
+<button (click)="addNew()">Add New Data</button>
+<ul>
+  <li *ngFor="let post of posts; let i = index">
+    <p>{{ i }} - {{ post.postTitle }}</p>
+  </li>
+</ul>

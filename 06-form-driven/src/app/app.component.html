@@ -1,0 +1,94 @@
+<h1>{{ title }}</h1>
+
+<!--Driven Form-->
+<div class="container mt-5">
+  <div class="form-area">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label>First Name:</label>
+        <input
+          #fullName="ngModel"
+          (change)="getValue(fullName)"
+          [ngClass]="{ 'is-invalid': fullName.touched && fullName.invalid }"
+          class="form-control"
+          maxlength="10"
+          minlength="5"
+          name="fullName"
+          ngModel
+          placeholder="Full Name"
+          required
+          type="text"
+        />
+        <div *ngIf="fullName.errors?.required">
+          <div
+            *ngIf="fullName.touched && fullName.invalid"
+            class="alert alert-danger"
+          >
+            Full Name is required
+          </div>
+        </div>
+        <div *ngIf="fullName.errors?.minlength">
+          <div
+            *ngIf="fullName.touched && fullName.invalid"
+            class="alert alert-danger"
+          >
+            Full Name must be at least 5 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+          class="form-control"
+          name="email"
+          ngModel
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+          placeholder="Email"
+          required
+          type="email"
+        />
+        <div *ngIf="email.errors?.required">
+          <div
+            *ngIf="email.touched && email.invalid"
+            class="alert alert-danger"
+          >
+            Email is required
+          </div>
+        </div>
+        <div *ngIf="email.errors?.pattern">
+          <div
+            *ngIf="email.touched && email.invalid"
+            class="alert alert-danger"
+          >
+            Please enter valid email
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address:</label>
+        <textarea
+          #address="ngModel"
+          [ngClass]="{ 'is-invalid': address.touched && address.invalid }"
+          class="form-control"
+          cols="30"
+          name="address"
+          ngModel
+          placeholder="Address"
+          required
+          rows="10"
+        >
+        </textarea>
+        <div *ngIf="address.errors?.required">
+          <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+            Address is required
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="f.invalid" class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

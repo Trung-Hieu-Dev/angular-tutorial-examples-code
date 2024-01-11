@@ -1,0 +1,86 @@
+<h1>Directive</h1>
+
+<!--NgFor Directive-->
+<!--<ul>-->
+<!--  <li *ngFor="let post of postArray">{{ post }}</li>-->
+<!--</ul>-->
+
+<button (click)="addItem()">Add New</button>
+
+<div *ngIf="objArray.length > 0; then postList; else nodata"></div>
+<ng-template #postList>
+  <ul>
+    <li *ngFor="let post of objArray; let i = index">
+      {{ post.postTitle }}
+      <button (click)="deleteItem(i)">Delete</button>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #nodata>
+  <p>There are no data to fetch...</p>
+</ng-template>
+
+<!--NgSwitchCase-->
+<div>
+  <button (click)="onClick('step 1')">Step 1</button>
+  <button (click)="onClick('step 2')">Step 2</button>
+  <button (click)="onClick('step 3')">Step 3</button>
+</div>
+<div [ngSwitch]="stepForm">
+  <div *ngSwitchCase="'step 1'">Step 1 form</div>
+  <div *ngSwitchCase="'step 2'">Step 2 form</div>
+  <div *ngSwitchCase="'step 3'">Step 3 form</div>
+  <div *ngSwitchDefault>{{ stepForm }}</div>
+</div>
+
+<!--NgStyle Directive-->
+<h2
+  [style.color]="isActive ? 'red' : 'black'"
+  [style.text-transform]="isActive ? 'uppercase' : 'lowercase'"
+>
+  Angular Course
+</h2>
+<h2
+  [ngStyle]="{
+    color: isActive ? 'red' : 'black',
+    textTransform: isActive ? 'uppercase' : 'lowercase'
+  }"
+>
+  NgStyle Directive
+</h2>
+
+<!--NgClass-->
+<h2 [class]="{ main: isActive, 'text-weight': isActive }">Binding Class</h2>
+<h2 [ngClass]="{ main: isActive, 'text-weight': isActive }">Class Directive</h2>
+<hr/>
+
+<!--Tasks-->
+<div class="form">
+  <h2>User Details</h2>
+  Your name:
+  <input [(ngModel)]="name" type="text"/> <br/><br/>
+  Email:
+  <input [(ngModel)]="email" type="text"/> <br/><br/>
+  Address:
+  <input [(ngModel)]="address" type="text"/> <br/><br/>
+  <button (click)="onSubmitForm()">Save</button>
+</div>
+
+<table>
+  <thead>
+  <th>#</th>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Address</th>
+  <th>Action</th>
+  </thead>
+  <tr *ngFor="let user of users; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.address }}</td>
+    <td>
+      <button (click)="onDelete(i)">Delete</button>
+    </td>
+  </tr>
+</table>

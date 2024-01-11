@@ -1,0 +1,20 @@
+<!--Uppercase Pipe-->
+<h1>{{ title | uppercase }}</h1>
+
+<!--Number Pipe-->
+<p>Number pipe: {{ count | number }}</p>
+<p>Decimal pipe: {{ decCount | number: "1.2-2" }}</p>
+
+<!--Currency pipe-->
+<p>Currency pipe: {{ price | currency: "VND" : "symbol" : "0.2-2" }}</p>
+
+<!--Date pipe-->
+<p>Date pipe: {{ today | date: "dd/MM/YYYY" }}</p>
+
+<!--JSON pipe-->
+<p>JSON pipe: {{ postObj | json }}</p>
+
+<!--Custom pipe-->
+<h2>Custom pipe</h2>
+<p>{{ userDetails.name | append: 'name' }}</p>
+<p>{{ userDetails.city | append: 'city' }}</p>
